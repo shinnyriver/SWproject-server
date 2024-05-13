@@ -3,6 +3,7 @@ from .extensions import db, migrate, login_manager, cors
 from .api import auth_routes, photo_routes, message_routes
 from config import Config
 
+
 def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
