@@ -4,7 +4,7 @@ from flask_jwt_extended import create_access_token
 from app.models import User
 from app.extensions import db
 
-bp = Blueprint('auth', __name__, url_prefix='/auth')
+bp = Blueprint("auth", __name__, url_prefix="/auth")
 
 
 @bp.route("/register", methods=["POST"])
@@ -18,15 +18,15 @@ def register():
     return jsonify({"message": "User registered successfully"}), 201
 
 
-@bp.route('/login', methods=['POST'])
+@bp.route("/login", methods=["POST"])
 def login():
     # 요청에서 JSON 데이터가 없는 경우 에러 메시지 반환
     if not request.is_json:
         return jsonify({"msg": "Missing JSON in request"}), 400
 
     # 요청 JSON 데이터에서 username과 password 추출
-    username = request.json.get('username', None)
-    password = request.json.get('password', None)
+    username = request.json.get("username", None)
+    password = request.json.get("password", None)
 
     # username 또는 password가 누락된 경우 에러 메시지 반환
     if not username or not password:
